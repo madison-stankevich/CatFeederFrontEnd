@@ -28,17 +28,21 @@ class Cat {
     let name = document.createElement('h2')
     let picture = document.createElement('img')
     let description = document.createElement('p')
-    let selectCatFoodForm = document.createElement('button')
+    let renderCatFoodForm = document.createElement('button')
     let status = document.createElement('p')
 
     name.textContent = this.name
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
+    renderCatFoodForm.textContent = "update favorite food"
+
+    renderCatFoodForm.addEventListener('click', this.renderForm)
 
     div.appendChild(name)
     div.appendChild(picture)
     div.appendChild(description)
+    div.appendChild(renderCatFoodForm)
     div.appendChild(status)
 
     if (this.hungry){
@@ -54,6 +58,24 @@ class Cat {
 
 
     profile.appendChild(div)
+  }
+
+  async renderForm(){
+    let form = document.createElement('form')
+    await catFoodAdapter.fetchItems().then( json => {
+      json.forEach((catFood) => {
+        debugger
+        let radio = document.createElement('input')
+        radio.type = 'radio'
+        radio.value = catFood.id
+        // radio.textContent = catFood.name
+        form.appendChild(radio)
+      })
+    })
+    let submit = document.createElement('submit')
+    submit.textContent = "Submit"
+    form.appendChild(submit)
+    profile.appendChild(form)
   }
 
   renderLi(){
