@@ -68,12 +68,15 @@ class Cat {
         let radio = document.createElement('input')
         radio.type = 'radio'
         radio.value = catFood.id
-        // radio.textContent = catFood.name
+        let label = document.createElement('label')
+        label.textContent = catFood.name
         form.appendChild(radio)
+        form.appendChild(label)
       })
     })
-    let submit = document.createElement('submit')
-    submit.textContent = "Submit"
+    let submit = document.createElement('input')
+    submit.type = "submit"
+    submit.value = "Submit"
     form.appendChild(submit)
     profile.appendChild(form)
   }
