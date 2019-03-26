@@ -28,25 +28,28 @@ class Cat {
     let picture = document.createElement('img')
     let description = document.createElement('p')
     let status = document.createElement('p')
-    let statusButton = document.createElement('button')
 
     name.textContent = this.name
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
-    statusButton.textContent = "feed this cat"
-
-    statusButton.addEventListener('click', () =>{
-      this.hungry = !this.hungry
-      statusButton.remove();
-      status.textContent = this.status
-    })
 
     div.appendChild(name)
     div.appendChild(picture)
     div.appendChild(description)
     div.appendChild(status)
-    div.appendChild(statusButton)
+
+    if (this.hungry){
+      let statusButton = document.createElement('button')
+      statusButton.textContent = "feed this cat"
+      statusButton.addEventListener('click', () =>{
+        this.hungry = !this.hungry
+        statusButton.remove();
+        status.textContent = this.status
+      })
+      div.appendChild(statusButton)
+    }
+
 
     profile.appendChild(div)
   }
