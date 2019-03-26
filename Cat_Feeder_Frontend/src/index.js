@@ -1,13 +1,15 @@
 console.log("hello")
 const list = document.getElementById('list');
+const profile = document.getElementById('profile');
 
-fetch('http://localhost:3000/api/v1/cats')
-  .then(res => res.json())
-  .then(json => addItemsToList(json))
+catAdapter = new Adapter('cats')
+
+catAdapter.fetchItems().then(addItemsToList)
 
 function addItemsToList(items){
   items.forEach( item => {
-    let cat  = new Cat(item)
-    makeLi(cat)
+    let cat = new Cat(item)
+    cat.renderLi()
+    // cat.renderProfile()
   })
 }

@@ -18,8 +18,12 @@ class Cat {
     this.hungry = !this.hungry
   }
 
-  makeLi(){
-    let li = document.createElement('li')
+  renderProfile(){
+    while(profile.firstChild){
+      profile.removeChild(profile.firstChild)
+    }
+
+    let div = document.createElement('div')
     let name = document.createElement('h3')
     let picture = document.createElement('img')
     let description = document.createElement('p')
@@ -29,21 +33,35 @@ class Cat {
     name.textContent = this.name
     description.textContent = this.description
     status.textContent = this.status
-    picture.src = this.image_url
+    picture.src = this.imageUrl
     statusButton.textContent = "feed this cat"
 
     statusButton.addEventListener('click', () =>{
-      this.alternateStatus()
+      this.hungry = !this.hungry
+      statusButton.remove();
       status.textContent = this.status
     })
 
-    li.appendChild(name)
-    li.appendChild(picture)
-    li.appendChild(description)
-    li.appendChild(status)
-    li.appendChild(statusButton)
+    div.appendChild(name)
+    div.appendChild(picture)
+    div.appendChild(description)
+    div.appendChild(status)
+    div.appendChild(statusButton)
 
-    list.appendChild(li)
-
+    profile.appendChild(div)
   }
+
+  renderLi(){
+    let li = document.createElement('li')
+
+    li.textContent = this.name
+
+    li.addEventListener('click', () =>{
+      this.renderProfile()
+    })
+
+    list.appendChild(li);
+  }
+
+
 }
