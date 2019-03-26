@@ -4,6 +4,7 @@ class Cat {
     this.name = object.name
     this.description = object.description
     this.imageUrl = object.image_url
+    this.catFoodId = object.cat_food_id
   }
 
   get status(){
@@ -24,9 +25,10 @@ class Cat {
     }
 
     let div = document.createElement('div')
-    let name = document.createElement('h3')
+    let name = document.createElement('h2')
     let picture = document.createElement('img')
     let description = document.createElement('p')
+    let selectCatFoodForm = document.createElement('button')
     let status = document.createElement('p')
 
     name.textContent = this.name
@@ -61,7 +63,11 @@ class Cat {
 
     li.addEventListener('click', () =>{
       this.renderProfile()
-    })
+      catFoodAdapter.fetchItem(this.catFoodId).then(json => {
+        let newCatFood = new catFood(json)
+        newCatFood.renderInformation()
+      });
+    });
 
     list.appendChild(li);
   }

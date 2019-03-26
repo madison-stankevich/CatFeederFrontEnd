@@ -12,6 +12,10 @@ class Adapter {
     return this.get(`${this.baseUrl}`);
   }
 
+  fetchItem(id){
+    return this.get(`${this.baseUrl}/${id}`)
+  }
+
   updateItem(id, body) {
     return this.patch(`${this.baseUrl}/${id}`, body);
   }

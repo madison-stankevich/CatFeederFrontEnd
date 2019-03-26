@@ -1,8 +1,10 @@
 console.log("hello")
 const list = document.getElementById('list');
 const profile = document.getElementById('profile');
+const information = document.getElementById('information');
 
-catAdapter = new Adapter('cats')
+const catAdapter = new Adapter('cats')
+const catFoodAdapter = new Adapter('cat_foods')
 
 catAdapter.fetchItems().then(addItemsToList)
 
