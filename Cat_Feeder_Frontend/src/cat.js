@@ -64,10 +64,10 @@ class Cat {
     let form = document.createElement('form')
     await catFoodAdapter.fetchItems().then( json => {
       json.forEach((catFood) => {
-        debugger
         let radio = document.createElement('input')
         radio.type = 'radio'
         radio.value = catFood.id
+        radio.name = "catFoodId"
         let label = document.createElement('label')
         label.textContent = catFood.name
         form.appendChild(radio)
@@ -79,6 +79,14 @@ class Cat {
     submit.value = "Submit"
     form.appendChild(submit)
     profile.appendChild(form)
+
+    form.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      catFoodAdapter.fetchItem(ev.target.catFoodId.value).then(json => {
+        let newCatFood = new catFood(json)
+        newCatFood.renderInformation()
+      })
+    })
   }
 
   renderLi(){
