@@ -46,14 +46,14 @@ class Cat {
     div.appendChild(renderCatFoodForm)
     div.appendChild(status)
 
-    let feed = function() {
-      this.hungry = !this.hungry
-      statusButton.remove();
-      status.textContent = this.status
-    }
 
     if (this.hungry){
       let statusButton = document.createElement('button')
+      let feed = function() {
+        this.hungry = !this.hungry
+        statusButton.remove();
+        status.textContent = this.status
+      }
       statusButton.textContent = "feed this cat"
       statusButton.addEventListener('click', feed.bind(this))
       div.appendChild(statusButton)
@@ -97,7 +97,7 @@ class Cat {
     let submit = document.createElement('input')
     submit.type = "submit"
     submit.value = "Submit"
-    
+
     form.appendChild(submit)
     profile.appendChild(form)
 

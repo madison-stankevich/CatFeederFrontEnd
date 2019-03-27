@@ -20,6 +20,10 @@ class Adapter {
     return this.patch(`${this.baseUrl}/${id}`, body);
   }
 
+  addItem(body) {
+    return this.post(`${this.baseUrl}`, body);
+  }
+
   get(url) {
     return fetch(url).then(res => res.json());
   }
@@ -27,6 +31,14 @@ class Adapter {
   patch(url, body) {
     return fetch(url, {
       method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify(body),
+    }).then(res => res.json());
+  }
+
+  post(url, body) {
+    return fetch(url, {
+      method: 'POST',
       headers: this.headers,
       body: JSON.stringify(body),
     }).then(res => res.json());

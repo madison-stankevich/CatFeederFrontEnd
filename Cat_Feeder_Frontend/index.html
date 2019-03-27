@@ -5,7 +5,9 @@
     <title>Cat Feeder 2019</title>
     <script src="src/adapter.js" charset="utf-8" defer></script>
     <script src="src/cat.js" charset="utf-8" defer></script>
+    <script src="src/mark.js" charset="utf-8" defer></script>
     <script src="src/cat_food.js" charset="utf-8" defer></script>
+    <script src="src/assassin.js" charset="utf-8" defer></script>
     <script src="src/index.js" charset="utf-8" defer></script>
   </head>
   <body>
@@ -13,11 +15,26 @@
     <ul id="list">
 
     </ul>
+    <div id="form-toggle">
+
+    </div>
+    <div id="form-contianer">
+      <h4>Add a New Mark</h4>
+      <form id="new-cat-form">
+        <label for="name">Name:</label>
+        <input type="text" name="name">
+        <label for="image_url">Picture:</label>
+        <input type="text" name="picture">
+        <label for="description">Description:</label>
+        <input type="text-area" name="description">
+      </form>
+    </div>
     <div id="profile">
 
     </div>
     <div id="information">
 
     </div>
+    <button type="button" name="toggle" id="toggle"> don't click this</button>
   </body>
 </html>
