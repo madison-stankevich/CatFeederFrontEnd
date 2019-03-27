@@ -13,92 +13,63 @@ const markAdapter = new Adapter('marks')
 const catFoodAdapter = new Adapter('cat_foods')
 const assassinAdapter = new Adapter('assassins')
 
-let catMode = true
-modeToggle.addEventListener('click', () =>{
-  catMode = !catMode;
-  if(catMode){
-    list clear
-    profile clear
-    information clear
-    formToggle clear
-    call catfeeder
+let alternateId = null
+
+let catModeToggle = true
+modeToggle.addEventListener('click', pageToggle)
+
+catMode()
+
+function pageToggle(){
+  catModeToggle = !catModeToggle;
+  if(catModeToggle){
+    clearPage()
+    catMode(alternateId)
   }else{
-    list clear
-    profile clear
-    information clear
-    formToggle clear
-    call hitlist
+    clearPage()
+    hitList(alternateId)
   }
-})
-// catAdapter.fetchItems().then(addItemsToList)
-//
-// async function addItemsToList(items){
-//   await items.forEach( item => {
-//     let cat = new Cat(item)
-//     cat.renderLi()
-//     // cat.renderProfile()
-//   })
-//   list.appendChild(newCatButton)
-// }
-//
-// let newCatButton = document.createElement('button')
-// newCatButton.textContent = "add new cat"
-// formContainer.style.display = 'none'
-//
-// let addCat = false;
-//
-// newCatButton.addEventListener('click', () => {
-//   addCat = !addCat
-//   if (addCat){
-//     formContainer.style.display = 'block'
-//   }else{
-//     formContainer.style.display = 'none'
-//   }
-// })
-//
-// newCatForm.addEventListener('submit', (ev)=>{
-//   ev.preventDefault();
-//   let newCat = {
-//     name: ev.target.name.value,
-//     image_url: ev.target.picture.value,
-//     description: ev.target.description.value,
-//     assassin_id: ev.target.catFoodId.value
-//   }
-//   markAdapter.addItem(newCat).then(json => {
-//     let newCat = new Cat(json)
-//     newCat.renderLi()
-//   })
-// })
-//
-//
-// catFoodAdapter.fetchItems().then( json => {
-//   json.forEach((catFood) => {
-//     let radio = document.createElement('input')
-//     let label = document.createElement('label')
-//
-//     radio.type = 'radio'
-//     radio.value = catFood.id
-//     radio.name = "catFoodId"
-//
-//     label.textContent = catFood.name
-//
-//     newCatForm.appendChild(radio)
-//     newCatForm.appendChild(label)
-//   })
-//   let submit = document.createElement('input')
-//   submit.type = "submit"
-//   submit.value = "Submit"
-//
-//   newCatForm.appendChild(submit)
-// })
-function hitList(){
+}
+
+function clearPage(){
+  while(information.firstChild){
+    information.removeChild(information.firstChild)
+  }
+  while(profile.firstChild){
+    profile.removeChild(profile.firstChild)
+  }
+  while(list.firstChild){
+    list.removeChild(list.firstChild)
+  }
+  while(formToggle.firstChild){
+    formToggle.removeChild(formToggle.firstChild)
+  }
+}
+
+function catMode(currentCatId = null){
+  catAdapter.fetchItems().then(addItemsToList)
+
+  async function addItemsToList(items){
+    await items.forEach( item => {
+      let cat = new Cat(item)
+      cat.renderLi()
+      if (cat.id === currentCatId){
+        cat.renderShowPages()
+      }
+    })
+  }
+}
+
+function hitList(currentMarkId = null){
   markAdapter.fetchItems().then(addItemsToList)
 
   async function addItemsToList(items){
     await items.forEach( item => {
       let mark = new Mark(item)
       mark.renderLi()
-      // cat.renderProfile()
+      if (mark.id === currentMarkId){
+        mark.renderShowPages()
+      }
     })
   }
 

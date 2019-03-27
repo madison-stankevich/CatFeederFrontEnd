@@ -6,6 +6,7 @@ class Mark {
     this.imageUrl = object.image_url
     this.assassinId = object.assassin_id
     this.id = object.id
+    this.catId = object.cat_id
   }
 
   get status(){
@@ -75,6 +76,7 @@ class Mark {
       let newAssassin = new Assassin(json)
       newAssassin.renderInformation()
     });
+    alternateId = this.catId
   }
 
   async renderForm(){

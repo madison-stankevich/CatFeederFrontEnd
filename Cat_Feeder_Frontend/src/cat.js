@@ -6,6 +6,7 @@ class Cat {
     this.imageUrl = object.image_url
     this.catFoodId = object.cat_food_id
     this.id = object.id
+    this.markId = object.mark_id
   }
 
   get status(){
@@ -75,6 +76,7 @@ class Cat {
       let newCatFood = new catFood(json)
       newCatFood.renderInformation()
     });
+    alternateId = this.markId
   }
 
   async renderForm(){
