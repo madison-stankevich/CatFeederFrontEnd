@@ -5,6 +5,7 @@ class Cat {
     this.description = object.description
     this.imageUrl = object.image_url
     this.catFoodId = object.cat_food_id
+    this.id = object.id
   }
 
   get status(){
@@ -37,7 +38,7 @@ class Cat {
     picture.src = this.imageUrl
     renderCatFoodForm.textContent = "update favorite food"
 
-    renderCatFoodForm.addEventListener('click', this.renderForm)
+    renderCatFoodForm.addEventListener('click', this.renderForm.bind(this))
 
     div.appendChild(name)
     div.appendChild(picture)
@@ -80,14 +81,19 @@ class Cat {
     form.appendChild(submit)
     profile.appendChild(form)
 
-    form.addEventListener("submit", (ev) => {
-      ev.preventDefault();
-      catFoodAdapter.fetchItem(ev.target.catFoodId.value).then(json => {
-        let newCatFood = new catFood(json)
-        newCatFood.renderInformation()
-      })
-    })
+    form.addEventListener("submit", this.updateFood.bind(this));
   }
+
+  updateFood(ev){
+    ev.preventDefault();
+    catFoodAdapter.fetchItem(ev.target.catFoodId.value).then(json => {
+      let newCatFood = new catFood(json)
+      newCatFood.renderInformation()
+    })
+    this.catFoodId = ev.target.catFoodId.value
+    catAdapter.updateItem(this.id, {cat_food_id: this.catFoodId})
+  }
+
 
   renderLi(){
     let li = document.createElement('li')
