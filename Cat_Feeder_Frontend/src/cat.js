@@ -46,19 +46,35 @@ class Cat {
     div.appendChild(renderCatFoodForm)
     div.appendChild(status)
 
+    let feed = function() {
+      this.hungry = !this.hungry
+      statusButton.remove();
+      status.textContent = this.status
+    }
+
     if (this.hungry){
       let statusButton = document.createElement('button')
       statusButton.textContent = "feed this cat"
-      statusButton.addEventListener('click', () =>{
-        this.hungry = !this.hungry
-        statusButton.remove();
-        status.textContent = this.status
-      })
+      statusButton.addEventListener('click', feed.bind(this))
       div.appendChild(statusButton)
     }
 
-
     profile.appendChild(div)
+  }
+
+  renderLi(){
+    let li = document.createElement('li')
+    li.textContent = this.name
+    li.addEventListener('click', this.renderShowPages.bind(this));
+    list.appendChild(li);
+  }
+
+  renderShowPages(){
+    this.renderProfile()
+    catFoodAdapter.fetchItem(this.catFoodId).then(json => {
+      let newCatFood = new catFood(json)
+      newCatFood.renderInformation()
+    });
   }
 
   async renderForm(){
@@ -66,11 +82,14 @@ class Cat {
     await catFoodAdapter.fetchItems().then( json => {
       json.forEach((catFood) => {
         let radio = document.createElement('input')
+        let label = document.createElement('label')
+
         radio.type = 'radio'
         radio.value = catFood.id
         radio.name = "catFoodId"
-        let label = document.createElement('label')
+
         label.textContent = catFood.name
+
         form.appendChild(radio)
         form.appendChild(label)
       })
@@ -78,6 +97,7 @@ class Cat {
     let submit = document.createElement('input')
     submit.type = "submit"
     submit.value = "Submit"
+    
     form.appendChild(submit)
     profile.appendChild(form)
 
@@ -93,23 +113,5 @@ class Cat {
     this.catFoodId = ev.target.catFoodId.value
     catAdapter.updateItem(this.id, {cat_food_id: this.catFoodId})
   }
-
-
-  renderLi(){
-    let li = document.createElement('li')
-
-    li.textContent = this.name
-
-    li.addEventListener('click', () =>{
-      this.renderProfile()
-      catFoodAdapter.fetchItem(this.catFoodId).then(json => {
-        let newCatFood = new catFood(json)
-        newCatFood.renderInformation()
-      });
-    });
-
-    list.appendChild(li);
-  }
-
 
 }
