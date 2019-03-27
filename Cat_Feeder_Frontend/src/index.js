@@ -17,6 +17,8 @@ let alternateId = null
 
 let catModeToggle = true
 modeToggle.addEventListener('click', pageToggle)
+// modeToggle.addEventListener('', pageToggle) //Add event listener for keystroke
+
 
 catMode()
 
@@ -101,27 +103,49 @@ function hitList(currentMarkId = null){
       let newMark = new Mark(json)
       newMark.renderLi()
     })
+    formContainer.style.display = 'none'
   })
 
 
-  assassinAdapter.fetchItems().then( json => {
-    json.forEach((assassin) => {
-      let radio = document.createElement('input')
-      let label = document.createElement('label')
-
-      radio.type = 'radio'
-      radio.value = assassin.id
-      radio.name = "assassinId"
-
-      label.textContent = assassin.name
-
-      newMarkForm.appendChild(radio)
-      newMarkForm.appendChild(label)
-    })
-    let submit = document.createElement('input')
-    submit.type = "submit"
-    submit.value = "Submit"
-
-    newMarkForm.appendChild(submit)
-  })
+  // assassinAdapter.fetchItems().then( json => {
+  //   json.forEach((assassin) => {
+  //     let radio = document.createElement('input')
+  //     let label = document.createElement('label')
+  //
+  //     radio.type = 'radio'
+  //     radio.value = assassin.id
+  //     radio.name = "assassinId"
+  //
+  //     label.textContent = assassin.name
+  //
+  //     newMarkForm.appendChild(radio)
+  //     newMarkForm.appendChild(label)
+  //   })
+  //   let submit = document.createElement('input')
+  //   submit.type = "submit"
+  //   submit.value = "Submit"
+  //
+  //   newMarkForm.appendChild(submit)
+  // })
 }
+
+assassinAdapter.fetchItems().then( json => {
+  json.forEach((assassin) => {
+    let radio = document.createElement('input')
+    let label = document.createElement('label')
+
+    radio.type = 'radio'
+    radio.value = assassin.id
+    radio.name = "assassinId"
+
+    label.textContent = assassin.name
+
+    newMarkForm.appendChild(radio)
+    newMarkForm.appendChild(label)
+  })
+  let submit = document.createElement('input')
+  submit.type = "submit"
+  submit.value = "Submit"
+
+  newMarkForm.appendChild(submit)
+})
