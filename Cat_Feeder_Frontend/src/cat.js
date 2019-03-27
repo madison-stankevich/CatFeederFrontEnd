@@ -51,15 +51,16 @@ class Cat {
     if (this.hungry){
       let statusButton = document.createElement('button')
       let feed = function() {
-        this.hungry = !this.hungry
+        this.hungry = !this.hungry;
         statusButton.remove();
-        status.textContent = this.status
+        status.textContent = this.status;
+        debugger
+        markAdapter.updateItem(this.markId, {alive: false})
       }
       statusButton.textContent = "feed this cat"
       statusButton.addEventListener('click', feed.bind(this))
       div.appendChild(statusButton)
     }
-
     profile.appendChild(div)
   }
 
