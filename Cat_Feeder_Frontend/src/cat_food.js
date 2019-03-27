@@ -3,6 +3,7 @@ class catFood {
     this.imageUrl = object.image_url
     this.name = object.name
     this.description = object.description
+    this.price = object.price
   }
 
   renderInformation(){
@@ -15,7 +16,7 @@ class catFood {
     let description = document.createElement('p')
 
     picture.src = this.imageUrl
-    name.textContent = this.name
+    name.textContent = `${this.name}: ${this.price}`
     description.textContent = this.description
 
     information.appendChild(name)
