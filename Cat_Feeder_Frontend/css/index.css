@@ -1,0 +1,35 @@
+div {
+  float: left;
+  width: 33%;
+}
+
+#title {
+  text-align: center;
+}
+
+.thumbnail {
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.nameLi {
+  display: inline-block;
+  text-align: middle;
+}
+
+.profile-image {
+  width: 25vw;
+  height: 25vw;
+  /* overflow: hidden;  */
+  object-fit: contain;
+  align-items: baseline;
+}
+
+.information-image {
+  width: 15vw;
+  height: auto;
+  object-fit: contain;
+}

@@ -12,6 +12,7 @@ class Assassin {
     }
 
     let picture = document.createElement('img')
+    picture.classList.add("information-image")
     let name = document.createElement('h3')
     let description = document.createElement('p')
 

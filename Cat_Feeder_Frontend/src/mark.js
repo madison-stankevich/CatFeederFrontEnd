@@ -37,6 +37,7 @@ class Mark {
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
+    picture.classList.add("profile-image")
     renderAssassinForm.textContent = "update assassin"
 
     renderAssassinForm.addEventListener('click', this.renderForm.bind(this))
@@ -65,8 +66,16 @@ class Mark {
 
   renderLi(){
     let li = document.createElement('li')
+    let thumbnail = document.createElement('img')
+
+    thumbnail.src = this.imageUrl
+    thumbnail.classList.add('thumbnail')
     li.textContent = this.name
+    li.classList.add('nameLi')
+
     li.addEventListener('click', this.renderShowPages.bind(this));
+
+    li.appendChild(thumbnail)
     list.appendChild(li);
   }
 
