@@ -39,8 +39,12 @@ class Cat {
     picture.src = this.imageUrl
     picture.height = "150"
     renderCatFoodForm.textContent = "update favorite food"
+    renderCatFoodForm.id = "cat-food-button"
 
-    renderCatFoodForm.addEventListener('click', this.renderForm.bind(this))
+    renderCatFoodForm.addEventListener('click', () => {
+      renderCatFoodForm.style.display = 'none'
+      this.renderForm.apply(this)
+    })
 
     div.appendChild(name)
     div.appendChild(picture)
@@ -105,17 +109,18 @@ class Cat {
     form.appendChild(submit)
     profile.appendChild(form)
 
-    form.addEventListener("submit", this.updateFood.bind(this));
-  }
-
-  updateFood(ev){
-    ev.preventDefault();
-    catFoodAdapter.fetchItem(ev.target.catFoodId.value).then(json => {
-      let newCatFood = new catFood(json)
-      newCatFood.renderInformation()
-    })
-    this.catFoodId = ev.target.catFoodId.value
-    catAdapter.updateItem(this.id, {cat_food_id: this.catFoodId})
+    form.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      document.getElementById('cat-food-button').style.display = 'block'
+      catFoodAdapter.fetchItem(ev.target.catFoodId.value).then(json => {
+        let newCatFood = new catFood(json)
+        newCatFood.renderInformation()
+      })
+      this.catFoodId = ev.target.catFoodId.value
+      catAdapter.updateItem(this.id, {cat_food_id: this.catFoodId})
+      
+      form.remove();
+    });
   }
 
 }
