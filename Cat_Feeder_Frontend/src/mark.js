@@ -82,14 +82,12 @@ class Mark {
 
   renderLi(){
     let li = document.createElement('li')
-<<<<<<< HEAD
     let thumbnail = document.createElement('img')
 
     thumbnail.src = this.imageUrl
     thumbnail.classList.add('thumbnail')
-=======
+    
     li.dataset.markId = this.id
->>>>>>> bff7e48febecad623058e70cc3ab96b512ca65f5
     li.textContent = this.name
     li.classList.add('nameLi')
 
