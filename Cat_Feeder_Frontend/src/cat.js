@@ -25,6 +25,9 @@ class Cat {
     while(profile.firstChild){
       profile.removeChild(profile.firstChild)
     }
+    while(updateCatFood.firstChild){
+      updateCatFood.removeChild(updateCatFood.firstChild)
+    }
 
     let div = document.createElement('div')
     let name = document.createElement('h2')
@@ -37,9 +40,12 @@ class Cat {
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
-    picture.classList.add("profile-image")
     renderCatFoodForm.textContent = "update favorite food"
     renderCatFoodForm.id = "cat-food-button"
+
+    name.classList.add("nameProfile")
+    picture.classList.add("profile-image")
+
 
     renderCatFoodForm.addEventListener('click', () => {
       renderCatFoodForm.style.display = 'none'
@@ -49,7 +55,7 @@ class Cat {
     div.appendChild(name)
     div.appendChild(picture)
     div.appendChild(description)
-    div.appendChild(renderCatFoodForm)
+    updateCatFood.appendChild(renderCatFoodForm)
     div.appendChild(status)
 
 
@@ -71,15 +77,19 @@ class Cat {
   renderLi(){
     let li = document.createElement('li')
     let thumbnail = document.createElement('img')
+    let name = document.createElement('span')
+
+    li.className = "nameLi"
 
     thumbnail.src = this.imageUrl
     thumbnail.classList.add('thumbnail')
-    li.textContent = this.name
-    li.classList.add('nameLi')
+    name.textContent = this.name
+
+    li.appendChild(thumbnail)
+    li.appendChild(name)
 
     li.addEventListener('click', this.renderShowPages.bind(this));
 
-    li.appendChild(thumbnail)
     list.appendChild(li);
   }
 
@@ -114,7 +124,7 @@ class Cat {
     submit.value = "Submit"
 
     form.appendChild(submit)
-    profile.appendChild(form)
+    updateCatFood.appendChild(form)
 
     form.addEventListener("submit", (ev) => {
       ev.preventDefault();
@@ -125,7 +135,7 @@ class Cat {
       })
       this.catFoodId = ev.target.catFoodId.value
       catAdapter.updateItem(this.id, {cat_food_id: this.catFoodId})
-      
+
       form.remove();
     });
   }

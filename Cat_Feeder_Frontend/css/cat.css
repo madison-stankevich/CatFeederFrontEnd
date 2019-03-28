@@ -1,5 +1,10 @@
-.column25 {
+/* .column25 {
     float: left;
+    margin: 0;
+    width: 25%;
+}
+.column25right {
+    float: right;
     margin: 0;
     width: 25%;
 }
@@ -11,8 +16,7 @@
 }
 
 .standard_image {
-    height: 25 px;
+    height: 50vh;
     width: auto;
-}
-
-/* hey there */
+    border-radius: 50%;
+} */

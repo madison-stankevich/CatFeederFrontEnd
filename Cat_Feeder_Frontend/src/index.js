@@ -7,6 +7,8 @@ const newMarkForm = document.getElementById('new-cat-form');
 const formToggle = document.getElementById('form-toggle');
 const modeToggle = document.getElementById('toggle');
 const cssMode = document.getElementById('css-mode')
+const updateCatFood = document.getElementById('update-information')
+
 
 
 const catAdapter = new Adapter('cats')
@@ -43,6 +45,9 @@ function clearPage(){
   }
   while(list.firstChild){
     list.removeChild(list.firstChild)
+  }
+  while(updateCatFood.firstChild){
+    updateCatFood.removeChild(updateCatFood.firstChild)
   }
   if(document.getElementById('new-mark-button')){
     formToggle.removeChild(document.getElementById('new-mark-button'));

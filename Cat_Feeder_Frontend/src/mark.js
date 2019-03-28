@@ -25,6 +25,9 @@ class Mark {
     while(profile.firstChild){
       profile.removeChild(profile.firstChild)
     }
+    while(updateCatFood.firstChild){
+      updateCatFood.removeChild(updateCatFood.firstChild)
+    }
 
     let div = document.createElement('div')
     let name = document.createElement('h2')
@@ -60,7 +63,7 @@ class Mark {
     div.appendChild(name)
     div.appendChild(picture)
     div.appendChild(description)
-    div.appendChild(renderAssassinForm)
+    updateCatFood.appendChild(renderAssassinForm)
     div.appendChild(status)
     div.appendChild(deleteButton)
 
@@ -86,7 +89,7 @@ class Mark {
 
     thumbnail.src = this.imageUrl
     thumbnail.classList.add('thumbnail')
-    
+
     li.dataset.markId = this.id
     li.textContent = this.name
     li.classList.add('nameLi')
@@ -128,7 +131,7 @@ class Mark {
     submit.value = "Submit"
 
     form.appendChild(submit)
-    profile.appendChild(form)
+    updateCatFood.appendChild(form)
 
     form.addEventListener("submit", (ev) => {
       ev.preventDefault();

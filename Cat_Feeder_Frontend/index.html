@@ -2,7 +2,14 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <title>Cat Feeder 2019</title>
+
     <script src="src/adapter.js" charset="utf-8" defer></script>
     <script src="src/cat.js" charset="utf-8" defer></script>
     <script src="src/mark.js" charset="utf-8" defer></script>
@@ -10,34 +17,68 @@
     <script src="src/assassin.js" charset="utf-8" defer></script>
     <script src="src/index.js" charset="utf-8" defer></script>
     <link id="css-mode" rel="stylesheet" href="css/catmode.css">
+
     <link rel="stylesheet" href="css/index.css">
 
   </head>
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">WebSiteName</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <body>
-    <h1 id="title">Cat Feeder</h1>
-    <ul id="list" class="column25">
 
-    </ul>
-    <div id="form-toggle">
-
-      <div id="form-contianer" style="display: none;">
-        <h4>Add a New Mark</h4>
-        <form id="new-cat-form">
-          <label for="name">Name:</label>
-          <input type="text" name="name">
-          <label for="image_url">Picture:</label>
-          <input type="text" name="picture">
-          <label for="description">Description:</label>
-          <input type="text-area" name="description">
-        </form>
+    <div class="row">
+    <div class="col-3">
+      1 of 3
+      <ul id="list" class="column25"></ul>
+      <div id="form-toggle">
+        <div id="form-contianer" style="display: none;">
+          <h4>Add a New Mark</h4>
+          <form id="new-cat-form">
+            <label for="name">Name:</label>
+            <input type="text" name="name">
+            <label for="image_url">Picture:</label>
+            <input type="text" name="picture">
+            <label for="description">Description:</label>
+            <input type="text-area" name="description">
+          </form>
+        </div>
       </div>
     </div>
-    <div id="profile" class="column50">
-
+    <div class="col-5">
+      2 of 3 (wider)
+      <div id="profile" class="column50">
+      </div>
     </div>
-    <div id="information"  class="column25">
-
+    <div class="col-4">
+      3 of 3
+      <div id="information"  class="column25">
+      </div>
+      <div id="update-information">
+      </div>
     </div>
+  </div>
+
+    <h1 id="title">Cat Feeder</h1>
+
     <button type="button" name="toggle" id="toggle"> don't click this</button>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
