@@ -32,6 +32,7 @@ class Mark {
     let description = document.createElement('p')
     let renderAssassinForm = document.createElement('button')
     let status = document.createElement('p')
+    let deleteButton = document.createElement('button')
 
     name.textContent = this.name
     description.textContent = this.description
@@ -39,7 +40,17 @@ class Mark {
     picture.src = this.imageUrl
     renderAssassinForm.textContent = "update assassin"
     renderAssassinForm.id = "assassin-button"
+    deleteButton.textContent = "forgiven"
+    deleteButton.id = "delete-mark"
 
+    deleteButton.addEventListener('click', () =>{
+      markAdapter.deleteItem(this.id).then(res => {
+        if(res.ok){
+          clearPage()
+          hitList()
+        }
+      })
+    })
     renderAssassinForm.addEventListener('click', () => {
       renderAssassinForm.style.display = 'none'
       this.renderForm.apply(this)
@@ -50,6 +61,7 @@ class Mark {
     div.appendChild(description)
     div.appendChild(renderAssassinForm)
     div.appendChild(status)
+    div.appendChild(deleteButton)
 
 
     if (this.alive){
@@ -69,6 +81,7 @@ class Mark {
 
   renderLi(){
     let li = document.createElement('li')
+    li.dataset.markId = this.id
     li.textContent = this.name
     li.addEventListener('click', this.renderShowPages.bind(this));
     list.appendChild(li);

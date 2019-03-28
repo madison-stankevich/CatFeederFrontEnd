@@ -24,6 +24,10 @@ class Adapter {
     return this.post(`${this.baseUrl}`, body);
   }
 
+  deleteItem(id) {
+    return this.delete(`${this.baseUrl}/${id}`);
+  }
+
   get(url) {
     return fetch(url).then(res => res.json());
   }
@@ -34,6 +38,10 @@ class Adapter {
       headers: this.headers,
       body: JSON.stringify(body),
     }).then(res => res.json());
+  }
+
+  delete(url, body) {
+    return fetch(url, {method: 'DELETE'});
   }
 
   post(url, body) {
