@@ -105,28 +105,6 @@ function hitList(currentMarkId = null){
     })
     formContainer.style.display = 'none'
   })
-
-
-  // assassinAdapter.fetchItems().then( json => {
-  //   json.forEach((assassin) => {
-  //     let radio = document.createElement('input')
-  //     let label = document.createElement('label')
-  //
-  //     radio.type = 'radio'
-  //     radio.value = assassin.id
-  //     radio.name = "assassinId"
-  //
-  //     label.textContent = assassin.name
-  //
-  //     newMarkForm.appendChild(radio)
-  //     newMarkForm.appendChild(label)
-  //   })
-  //   let submit = document.createElement('input')
-  //   submit.type = "submit"
-  //   submit.value = "Submit"
-  //
-  //   newMarkForm.appendChild(submit)
-  // })
 }
 
 assassinAdapter.fetchItems().then( json => {

@@ -37,6 +37,7 @@ class Cat {
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
+    picture.height = "150"
     renderCatFoodForm.textContent = "update favorite food"
 
     renderCatFoodForm.addEventListener('click', this.renderForm.bind(this))

@@ -16,6 +16,7 @@ class catFood {
     let description = document.createElement('p')
 
     picture.src = this.imageUrl
+    picture.height = "150"
     name.textContent = `${this.name}: ${this.price}`
     description.textContent = this.description
 
