@@ -96,21 +96,22 @@ function hitList(currentMarkId = null){
     }
   })
 
-  newMarkForm.addEventListener('submit', (ev)=>{
-    ev.preventDefault();
-    let newMark = {
-      name: ev.target.name.value,
-      image_url: ev.target.picture.value,
-      description: ev.target.description.value,
-      assassin_id: ev.target.assassinId.value
-    }
-    markAdapter.addItem(newMark).then(json => {
-      let newMark = new Mark(json)
-      newMark.renderLi()
-    })
-    formContainer.style.display = 'none'
-  })
 }
+
+newMarkForm.addEventListener('submit', (ev)=>{
+  ev.preventDefault();
+  let newMark = {
+    name: ev.target.name.value,
+    image_url: ev.target.picture.value,
+    description: ev.target.description.value,
+    assassin_id: ev.target.assassinId.value
+  }
+  markAdapter.addItem(newMark).then(json => {
+    let newMark = new Mark(json)
+    newMark.renderLi()
+  })
+  formContainer.style.display = 'none'
+})
 
 assassinAdapter.fetchItems().then( json => {
   json.forEach((assassin) => {

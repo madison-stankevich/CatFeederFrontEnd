@@ -32,6 +32,7 @@ class Mark {
     let description = document.createElement('p')
     let renderAssassinForm = document.createElement('button')
     let status = document.createElement('p')
+    let deleteButton = document.createElement('button')
 
     name.textContent = this.name
     description.textContent = this.description
@@ -39,14 +40,29 @@ class Mark {
     picture.src = this.imageUrl
     picture.classList.add("profile-image")
     renderAssassinForm.textContent = "update assassin"
+    renderAssassinForm.id = "assassin-button"
+    deleteButton.textContent = "forgiven"
+    deleteButton.id = "delete-mark"
 
-    renderAssassinForm.addEventListener('click', this.renderForm.bind(this))
+    deleteButton.addEventListener('click', () =>{
+      markAdapter.deleteItem(this.id).then(res => {
+        if(res.ok){
+          clearPage()
+          hitList()
+        }
+      })
+    })
+    renderAssassinForm.addEventListener('click', () => {
+      renderAssassinForm.style.display = 'none'
+      this.renderForm.apply(this)
+    })
 
     div.appendChild(name)
     div.appendChild(picture)
     div.appendChild(description)
     div.appendChild(renderAssassinForm)
     div.appendChild(status)
+    div.appendChild(deleteButton)
 
 
     if (this.alive){
@@ -66,10 +82,14 @@ class Mark {
 
   renderLi(){
     let li = document.createElement('li')
+<<<<<<< HEAD
     let thumbnail = document.createElement('img')
 
     thumbnail.src = this.imageUrl
     thumbnail.classList.add('thumbnail')
+=======
+    li.dataset.markId = this.id
+>>>>>>> bff7e48febecad623058e70cc3ab96b512ca65f5
     li.textContent = this.name
     li.classList.add('nameLi')
 
@@ -112,17 +132,18 @@ class Mark {
     form.appendChild(submit)
     profile.appendChild(form)
 
-    form.addEventListener("submit", this.updateAssassin.bind(this));
-  }
+    form.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      document.getElementById('assassin-button').style.display = 'block'
+      assassinAdapter.fetchItem(ev.target.assassinId.value).then(json => {
+        let newAssassin = new Assassin(json)
+        newAssassin.renderInformation()
+      })
+      this.assassinId = ev.target.assassinId.value
+      markAdapter.updateItem(this.id, {assassin_id: this.assassinId})
 
-  updateAssassin(ev){
-    ev.preventDefault();
-    assassinAdapter.fetchItem(ev.target.assassinId.value).then(json => {
-      let newAssassin = new Assassin(json)
-      newAssassin.renderInformation()
-    })
-    this.assassinId = ev.target.assassinId.value
-    markAdapter.updateItem(this.id, {assassin_id: this.assassinId})
+      form.remove();
+    });
   }
 
 }
