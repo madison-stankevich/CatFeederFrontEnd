@@ -9,7 +9,8 @@
     <script src="src/cat_food.js" charset="utf-8" defer></script>
     <script src="src/assassin.js" charset="utf-8" defer></script>
     <script src="src/index.js" charset="utf-8" defer></script>
-    <link rel="stylesheet" href="cat.css">
+    <link id="css-mode" rel="stylesheet" href="css/catmode.css">
+    <link rel="stylesheet" href="css/index.css">
 
   </head>
   <body>
@@ -19,17 +20,17 @@
     </ul>
     <div id="form-toggle">
 
-    </div>
-    <div id="form-contianer" style="display: none;">
-      <h4>Add a New Mark</h4>
-      <form id="new-cat-form">
-        <label for="name">Name:</label>
-        <input type="text" name="name">
-        <label for="image_url">Picture:</label>
-        <input type="text" name="picture">
-        <label for="description">Description:</label>
-        <input type="text-area" name="description">
-      </form>
+      <div id="form-contianer" style="display: none;">
+        <h4>Add a New Mark</h4>
+        <form id="new-cat-form">
+          <label for="name">Name:</label>
+          <input type="text" name="name">
+          <label for="image_url">Picture:</label>
+          <input type="text" name="picture">
+          <label for="description">Description:</label>
+          <input type="text-area" name="description">
+        </form>
+      </div>
     </div>
     <div id="profile" class="column50">
 

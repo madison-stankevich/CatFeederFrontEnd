@@ -6,6 +6,7 @@ const information = document.getElementById('information');
 const newMarkForm = document.getElementById('new-cat-form');
 const formToggle = document.getElementById('form-toggle');
 const modeToggle = document.getElementById('toggle');
+const cssMode = document.getElementById('css-mode')
 
 
 const catAdapter = new Adapter('cats')
@@ -17,7 +18,7 @@ let alternateId = null
 
 let catModeToggle = true
 modeToggle.addEventListener('click', pageToggle)
-// modeToggle.addEventListener('', pageToggle) //Add event listener for keystroke
+// modeToggle.addEventListener('', pageToggle)//Add event listener for keystroke
 
 
 catMode()
@@ -43,13 +44,15 @@ function clearPage(){
   while(list.firstChild){
     list.removeChild(list.firstChild)
   }
-  while(formToggle.firstChild){
-    formToggle.removeChild(formToggle.firstChild)
+  if(document.getElementById('new-mark-button')){
+    formToggle.removeChild(document.getElementById('new-mark-button'));
+    formContainer.style.display = 'none'
   }
 }
 
 function catMode(currentCatId = null){
   catAdapter.fetchItems().then(addItemsToList)
+  cssMode.href = 'css/catmode.css'
 
   async function addItemsToList(items){
     await items.forEach( item => {
@@ -64,6 +67,7 @@ function catMode(currentCatId = null){
 
 function hitList(currentMarkId = null){
   markAdapter.fetchItems().then(addItemsToList)
+  cssMode.href = 'css/hitlist.css'
 
   async function addItemsToList(items){
     await items.forEach( item => {
@@ -76,6 +80,7 @@ function hitList(currentMarkId = null){
   }
 
   let newMarkButton = document.createElement('button')
+  newMarkButton.id = "new-mark-button"
   newMarkButton.textContent = "add new mark"
   formContainer.style.display = 'none'
   formToggle.appendChild(newMarkButton)

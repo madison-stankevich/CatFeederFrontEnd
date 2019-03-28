@@ -37,7 +37,7 @@ class Cat {
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
-    picture.height = "150"
+    picture.classList.add("profile-image")
     renderCatFoodForm.textContent = "update favorite food"
     renderCatFoodForm.id = "cat-food-button"
 
@@ -59,7 +59,6 @@ class Cat {
         this.hungry = !this.hungry;
         statusButton.remove();
         status.textContent = this.status;
-        debugger
         markAdapter.updateItem(this.markId, {alive: false})
       }
       statusButton.textContent = "feed this cat"
@@ -71,8 +70,16 @@ class Cat {
 
   renderLi(){
     let li = document.createElement('li')
+    let thumbnail = document.createElement('img')
+
+    thumbnail.src = this.imageUrl
+    thumbnail.classList.add('thumbnail')
     li.textContent = this.name
+    li.classList.add('nameLi')
+
     li.addEventListener('click', this.renderShowPages.bind(this));
+
+    li.appendChild(thumbnail)
     list.appendChild(li);
   }
 
