@@ -38,8 +38,12 @@ class Mark {
     status.textContent = this.status
     picture.src = this.imageUrl
     renderAssassinForm.textContent = "update assassin"
+    renderAssassinForm.id = "assassin-button"
 
-    renderAssassinForm.addEventListener('click', this.renderForm.bind(this))
+    renderAssassinForm.addEventListener('click', () => {
+      renderAssassinForm.style.display = 'none'
+      this.renderForm.apply(this)
+    })
 
     div.appendChild(name)
     div.appendChild(picture)
@@ -103,17 +107,18 @@ class Mark {
     form.appendChild(submit)
     profile.appendChild(form)
 
-    form.addEventListener("submit", this.updateAssassin.bind(this));
-  }
+    form.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      document.getElementById('assassin-button').style.display = 'block'
+      assassinAdapter.fetchItem(ev.target.assassinId.value).then(json => {
+        let newAssassin = new Assassin(json)
+        newAssassin.renderInformation()
+      })
+      this.assassinId = ev.target.assassinId.value
+      markAdapter.updateItem(this.id, {assassin_id: this.assassinId})
 
-  updateAssassin(ev){
-    ev.preventDefault();
-    assassinAdapter.fetchItem(ev.target.assassinId.value).then(json => {
-      let newAssassin = new Assassin(json)
-      newAssassin.renderInformation()
-    })
-    this.assassinId = ev.target.assassinId.value
-    markAdapter.updateItem(this.id, {assassin_id: this.assassinId})
+      form.remove();
+    });
   }
 
 }
