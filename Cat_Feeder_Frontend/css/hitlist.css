@@ -18,18 +18,6 @@ body{
   font: arial;
 }
 
-.profile-imageHL {
-  width: 25vw;
-  height: 25vw;
-  overflow: hidden;
-  object-fit: cover;
-  /* align-items: baseline; */
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 50%;
-}
-
 .information-imageHL {
   width: 15vw;
   height: auto;

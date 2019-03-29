@@ -31,7 +31,11 @@ class Mark {
 
     let div = document.createElement('div')
     let name = document.createElement('h2')
+
+    let pictureConatiner = document.createElement('div')
     let picture = document.createElement('img')
+    let pictureOverlay = document.createElement('img')
+
     let description = document.createElement('p')
     let renderAssassinForm = document.createElement('button')
     let status = document.createElement('p')
@@ -41,6 +45,7 @@ class Mark {
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
+    pictureOverlay.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Red_X.svg/1024px-Red_X.svg.png"
     picture.classList.add("profile-image")
     renderAssassinForm.textContent = "update assassin"
     renderAssassinForm.id = "assassin-button"
@@ -53,7 +58,9 @@ class Mark {
     renderAssassinForm.classList.add("btn")
 
     name.classList.add("nameProfileHL")
-    picture.classList.add("profile-imageHL")
+    picture.classList.add("profile-image")
+    pictureOverlay.className = "mark-overlay"
+    pictureConatiner.className = "container"
     description.classList.add("descriptionProfileHL")
     profile.classList.add("statusProfileHL")
 
@@ -72,7 +79,9 @@ class Mark {
     })
 
     div.appendChild(name)
-    div.appendChild(picture)
+    pictureConatiner.appendChild(picture)
+    pictureConatiner.appendChild(pictureOverlay)
+    div.appendChild(pictureConatiner)
     div.appendChild(description)
     updateCatFood.appendChild(renderAssassinForm)
     div.appendChild(status)
@@ -81,10 +90,15 @@ class Mark {
 
     if (this.alive){
       let statusButton = document.createElement('button')
+      pictureOverlay.className = "hidden-overlay"
       let kill = function() {
         this.alive = !this.alive
         statusButton.remove();
+        renderAssassinForm.remove();
+        deleteButton.remove();
+        pictureOverlay.className = "mark-overlay"
         status.textContent = this.status
+        markAdapter.updateItem(this.id, {alive: false})
       }
       statusButton.textContent = "This has been handled"
       statusButton.classList.add("btn-danger")
@@ -92,6 +106,9 @@ class Mark {
 
       statusButton.addEventListener('click', kill.bind(this))
       div.appendChild(statusButton)
+    }else{
+      renderAssassinForm.remove();
+      deleteButton.remove();
     }
 
     profile.appendChild(div)

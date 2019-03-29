@@ -73,10 +73,11 @@ class Cat {
 
     if (this.hungry){
       let statusButton = document.createElement('button')
-      pictureOverlay.className = "hidden-cat-overlay"
+      pictureOverlay.className = "hidden-overlay"
       let feed = function() {
         this.hungry = !this.hungry;
         statusButton.remove();
+        renderCatFoodForm.remove();
         pictureOverlay.className = "cat-overlay"
         status.textContent = this.status;
         markAdapter.updateItem(this.markId, {alive: false})
@@ -89,6 +90,8 @@ class Cat {
 
       statusButton.addEventListener('click', feed.bind(this))
       div.appendChild(statusButton)
+    }else{
+      renderCatFoodForm.remove();
     }
     profile.appendChild(div)
   }
