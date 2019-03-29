@@ -1,3 +1,9 @@
 body{
   background-color: white;
 }
+
+
+#navBarAppName {
+  font-size: 30pt;
+  font-weight: 600;
+}

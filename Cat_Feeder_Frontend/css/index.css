@@ -99,3 +99,9 @@
 .hidden-overlay{
   display: none;
 }
+
+#navbar-button {
+  font-size: 30pt;
+  text-shadow: 4px 4px 10px black;
+  box-shadow: 2px 2px 5px black;
+}
