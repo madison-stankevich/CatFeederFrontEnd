@@ -42,6 +42,8 @@ class Cat {
     picture.src = this.imageUrl
     renderCatFoodForm.textContent = "update favorite food"
     renderCatFoodForm.id = "cat-food-button"
+    renderCatFoodForm.classList.add("btn-success")
+    renderCatFoodForm.classList.add("btn")
 
     name.classList.add("nameProfile")
     picture.classList.add("profile-image")
@@ -69,6 +71,11 @@ class Cat {
         markAdapter.updateItem(this.markId, {alive: false})
       }
       statusButton.textContent = "feed this cat"
+      statusButton.classList.add("btn-success")
+      statusButton.classList.add("btn")
+
+      // statusButton.classList.add("catModeBlue")
+
       statusButton.addEventListener('click', feed.bind(this))
       div.appendChild(statusButton)
     }
@@ -125,6 +132,8 @@ class Cat {
     let submit = document.createElement('input')
     submit.type = "submit"
     submit.value = "Submit"
+    submit.classList.add("btn-success")
+    submit.classList.add("btn")
 
     form.appendChild(submit)
     updateCatFood.appendChild(form)

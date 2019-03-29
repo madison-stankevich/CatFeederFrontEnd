@@ -1,4 +1,54 @@
 body{
-  background-color: black;
-  color: #b51212;
+  background-color: #252525
+;
+  color: white;
+  /* color: #b51212; */
+}
+
+.nameLiHL {
+  /* text-align: middle; */
+  list-style-type: none;
+  margin: 10px;
+  font-weight: 200;
+}
+
+.nameLiTextHL {
+  font-size: 20pt;
+  font-weight: 300;
+  font: arial;
+}
+
+.profile-imageHL {
+  width: 25vw;
+  height: 25vw;
+  overflow: hidden;
+  object-fit: cover;
+  /* align-items: baseline; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}
+
+.information-imageHL {
+  width: 15vw;
+  height: auto;
+  object-fit: contain;
+}
+
+.nameProfileHL {
+  text-align: center;
+  font-size: 80pt;
+  font-weight: 300;
+}
+
+.descriptionProfileHL {
+  text-align: center;
+  font-size: 25pt;
+}
+
+.statusProfileHL {
+  text-align: center;
+  font-style: bold;
+  font-size: 30pt;
 }

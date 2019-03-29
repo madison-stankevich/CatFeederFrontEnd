@@ -19,9 +19,14 @@ const markAdapter = new Adapter('marks')
 const catFoodAdapter = new Adapter('cat_foods')
 const assassinAdapter = new Adapter('assassins')
 
+const newMarkFormContainer = document.getElementById('new-cat-form-container')
+newMarkFormContainer.classList.add("new-mark-form")
+
 let alternateId = null
 let catModeToggle = true
 catMode()
+
+newMarkForm.classList.add("new-mark-form")
 
 navBarButton.addEventListener('click', pageToggle)
 
@@ -89,6 +94,10 @@ function hitList(currentMarkId = null){
   let newMarkButton = document.createElement('button')
   newMarkButton.id = "new-mark-button"
   newMarkButton.textContent = "add new mark"
+  newMarkButton.classList.add("btn-danger")
+  newMarkButton.classList.add("btn")
+
+
   formContainer.style.display = 'none'
   formToggle.appendChild(newMarkButton)
 
@@ -97,9 +106,12 @@ function hitList(currentMarkId = null){
   newMarkButton.addEventListener('click', () => {
     addMark = !addMark
     if (addMark){
+      newMarkButton.style.display = 'none'
       formContainer.style.display = 'block'
     }else{
       formContainer.style.display = 'none'
+      newMarkButton.style.display = 'block'
+
     }
   })
 
@@ -118,6 +130,8 @@ newMarkForm.addEventListener('submit', (ev)=>{
     newMark.renderLi()
   })
   formContainer.style.display = 'none'
+  newMarkButton.style.display = 'block'
+
 })
 
 assassinAdapter.fetchItems().then( json => {
@@ -133,12 +147,19 @@ assassinAdapter.fetchItems().then( json => {
 
     newMarkForm.appendChild(radio)
     newMarkForm.appendChild(label)
+    newMarkForm.appendChild(document.createElement("br"));
+
   })
   let submit = document.createElement('input')
   submit.type = "submit"
   submit.value = "Submit"
 
-  newMarkForm.appendChild(submit)
+  submit.classList.add("btn-danger")
+  submit.classList.add("btn")
+  newMarkForm.classList.add("new-mark-form")
+
+  newMarkForm.appendChild(document.createElement("br"));
+  newMarkForm.appendChild(submit);
 })
 
 function alternateNavBar() {
@@ -148,7 +169,7 @@ function alternateNavBar() {
     navBarAppName.innerText = "Cat Feeder"
     navBarAppName.className = "appName"
   }else{
-    navBarStyle.style = "background-color: #606363;"
+    navBarStyle.style = "background-color: #1E1E1E;"
     navBarLogo.src = "./css/logos/HitListLogo.png"
     navBarAppName.innerText = "The Hit List"
     navBarAppName.color = "white"

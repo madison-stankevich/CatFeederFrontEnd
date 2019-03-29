@@ -47,6 +47,16 @@ class Mark {
     deleteButton.textContent = "forgiven"
     deleteButton.id = "delete-mark"
 
+    deleteButton.classList.add("btn-success")
+    deleteButton.classList.add("btn")
+    renderAssassinForm.classList.add("btn-danger")
+    renderAssassinForm.classList.add("btn")
+
+    name.classList.add("nameProfileHL")
+    picture.classList.add("profile-imageHL")
+    description.classList.add("descriptionProfileHL")
+    profile.classList.add("statusProfileHL")
+
     deleteButton.addEventListener('click', () =>{
       markAdapter.deleteItem(this.id).then(res => {
         if(res.ok){
@@ -55,6 +65,7 @@ class Mark {
         }
       })
     })
+
     renderAssassinForm.addEventListener('click', () => {
       renderAssassinForm.style.display = 'none'
       this.renderForm.apply(this)
@@ -75,7 +86,10 @@ class Mark {
         statusButton.remove();
         status.textContent = this.status
       }
-      statusButton.textContent = "it has been handled"
+      statusButton.textContent = "This has been handled"
+      statusButton.classList.add("btn-danger")
+      statusButton.classList.add("btn")
+
       statusButton.addEventListener('click', kill.bind(this))
       div.appendChild(statusButton)
     }
@@ -88,8 +102,8 @@ class Mark {
     let thumbnail = document.createElement('img')
     let name = document.createElement('span')
 
-    li.className = "nameLi"
-    name.className = "nameLiText"
+    li.className = "nameLiHL"
+    name.className = "nameLiTextHL"
 
     thumbnail.src = this.imageUrl
     thumbnail.classList.add('thumbnail')
@@ -122,15 +136,20 @@ class Mark {
         radio.value = assassin.id
         radio.name = "assassinId"
 
-        label.textContent = assassin.name
+        label.textContent = `.        ${assassin.name}`
 
-        form.appendChild(radio)
-        form.appendChild(label)
+        form.appendChild(radio);
+        form.appendChild(label);
+        form.appendChild(document.createElement("br"));
+
       })
     })
     let submit = document.createElement('input')
     submit.type = "submit"
     submit.value = "Submit"
+
+    submit.classList.add("btn-danger")
+    submit.classList.add("btn")
 
     form.appendChild(submit)
     updateCatFood.appendChild(form)
