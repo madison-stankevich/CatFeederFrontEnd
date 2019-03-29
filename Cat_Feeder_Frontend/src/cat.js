@@ -31,7 +31,11 @@ class Cat {
 
     let div = document.createElement('div')
     let name = document.createElement('h2')
+
+    let pictureConatiner = document.createElement('div')
     let picture = document.createElement('img')
+    let pictureOverlay = document.createElement('img')
+
     let description = document.createElement('p')
     let renderCatFoodForm = document.createElement('button')
     let status = document.createElement('p')
@@ -40,6 +44,7 @@ class Cat {
     description.textContent = this.description
     status.textContent = this.status
     picture.src = this.imageUrl
+    pictureOverlay.src = "http://www.clker.com/cliparts/2/l/Z/u/a/S/pink-heart-md.png"
     renderCatFoodForm.textContent = "update favorite food"
     renderCatFoodForm.id = "cat-food-button"
     renderCatFoodForm.classList.add("btn-success")
@@ -47,6 +52,8 @@ class Cat {
 
     name.classList.add("nameProfile")
     picture.classList.add("profile-image")
+    pictureOverlay.className = "cat-overlay"
+    pictureConatiner.className = "container"
     description.classList.add("descriptionProfile")
     profile.classList.add("statusProfile")
 
@@ -56,7 +63,9 @@ class Cat {
     })
 
     div.appendChild(name)
-    div.appendChild(picture)
+    pictureConatiner.appendChild(picture)
+    pictureConatiner.appendChild(pictureOverlay)
+    div.appendChild(pictureConatiner)
     div.appendChild(description)
     updateCatFood.appendChild(renderCatFoodForm)
     div.appendChild(status)
@@ -64,9 +73,11 @@ class Cat {
 
     if (this.hungry){
       let statusButton = document.createElement('button')
+      pictureOverlay.className = "hidden-cat-overlay"
       let feed = function() {
         this.hungry = !this.hungry;
         statusButton.remove();
+        pictureOverlay.className = "cat-overlay"
         status.textContent = this.status;
         markAdapter.updateItem(this.markId, {alive: false})
       }
