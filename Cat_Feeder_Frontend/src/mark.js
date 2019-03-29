@@ -86,17 +86,19 @@ class Mark {
   renderLi(){
     let li = document.createElement('li')
     let thumbnail = document.createElement('img')
+    let name = document.createElement('span')
+
+    li.className = "nameLi"
+    name.className = "nameLiText"
 
     thumbnail.src = this.imageUrl
     thumbnail.classList.add('thumbnail')
-
-    li.dataset.markId = this.id
-    li.textContent = this.name
-    li.classList.add('nameLi')
+    name.textContent = this.name
 
     li.addEventListener('click', this.renderShowPages.bind(this));
 
-    li.appendChild(thumbnail)
+    li.appendChild(thumbnail);
+    li.appendChild(name);
     list.appendChild(li);
   }
 

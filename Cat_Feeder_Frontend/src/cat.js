@@ -45,7 +45,8 @@ class Cat {
 
     name.classList.add("nameProfile")
     picture.classList.add("profile-image")
-
+    description.classList.add("descriptionProfile")
+    profile.classList.add("statusProfile")
 
     renderCatFoodForm.addEventListener('click', () => {
       renderCatFoodForm.style.display = 'none'
@@ -80,16 +81,16 @@ class Cat {
     let name = document.createElement('span')
 
     li.className = "nameLi"
+    name.className = "nameLiText"
 
     thumbnail.src = this.imageUrl
     thumbnail.classList.add('thumbnail')
-    name.textContent = this.name
-
-    li.appendChild(thumbnail)
-    li.appendChild(name)
+    name.textContent = `         ${this.name}`
 
     li.addEventListener('click', this.renderShowPages.bind(this));
 
+    li.appendChild(thumbnail)
+    li.appendChild(name)
     list.appendChild(li);
   }
 
@@ -104,6 +105,7 @@ class Cat {
 
   async renderForm(){
     let form = document.createElement('form')
+
     await catFoodAdapter.fetchItems().then( json => {
       json.forEach((catFood) => {
         let radio = document.createElement('input')
@@ -113,10 +115,11 @@ class Cat {
         radio.value = catFood.id
         radio.name = "catFoodId"
 
-        label.textContent = catFood.name
+        label.textContent = `  ${catFood.name}`
 
-        form.appendChild(radio)
-        form.appendChild(label)
+        form.appendChild(radio);
+        form.appendChild(label);
+        form.appendChild(document.createElement("br"));
       })
     })
     let submit = document.createElement('input')

@@ -6,10 +6,13 @@ const information = document.getElementById('information');
 const newMarkForm = document.getElementById('new-cat-form');
 const formToggle = document.getElementById('form-toggle');
 const modeToggle = document.getElementById('toggle');
-const cssMode = document.getElementById('css-mode')
-const updateCatFood = document.getElementById('update-information')
+const cssMode = document.getElementById('css-mode');
+const updateCatFood = document.getElementById('update-information');
 
-
+const navBar = document.getElementById('navBar')
+const navBarStyle = document.getElementById('navBarStyle')
+const navBarLogo = document.getElementById('navBarLogo')
+const navBarButton = document.getElementById('navbar-button');
 
 const catAdapter = new Adapter('cats')
 const markAdapter = new Adapter('marks')
@@ -17,22 +20,21 @@ const catFoodAdapter = new Adapter('cat_foods')
 const assassinAdapter = new Adapter('assassins')
 
 let alternateId = null
-
 let catModeToggle = true
-modeToggle.addEventListener('click', pageToggle)
-// modeToggle.addEventListener('', pageToggle)//Add event listener for keystroke
-
-
 catMode()
+
+navBarButton.addEventListener('click', pageToggle)
 
 function pageToggle(){
   catModeToggle = !catModeToggle;
   if(catModeToggle){
     clearPage()
     catMode(alternateId)
+    alternateNavBar()
   }else{
     clearPage()
     hitList(alternateId)
+    alternateNavBar()
   }
 }
 
@@ -138,3 +140,18 @@ assassinAdapter.fetchItems().then( json => {
 
   newMarkForm.appendChild(submit)
 })
+
+function alternateNavBar() {
+  if(catModeToggle){
+    navBarStyle.style = "background-color: #00E5EE;"
+    navBarLogo.src = "./css/logos/WhitePawsLogo.png"
+    navBarAppName.innerText = "Cat Feeder"
+    navBarAppName.className = "appName"
+  }else{
+    navBarStyle.style = "background-color: #606363;"
+    navBarLogo.src = "./css/logos/HitListLogo.png"
+    navBarAppName.innerText = "The Hit List"
+    navBarAppName.color = "white"
+
+  }
+}

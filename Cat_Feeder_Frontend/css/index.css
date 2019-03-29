@@ -10,10 +10,22 @@
     object-fit: cover;
 }
 
+.appName{
+  font-size: 30pt;
+  font-weight: 400;
+  font: comic;
+}
+
 .nameLi {
   /* text-align: middle; */
   list-style-type: none;
   margin: 10px;
+}
+
+.nameLiText {
+  font-size: 30pt;
+  font-weight: 300;
+  font: arial;
 }
 
 .profile-image {
@@ -36,4 +48,16 @@
 
 .nameProfile {
   text-align: center;
+  font-size: 80pt;
+}
+
+.descriptionProfile {
+  text-align: center;
+  font-size: 25pt;
+}
+
+.statusProfile {
+  text-align: center;
+  font-style: bold;
+  font-size: 30pt;
 }

@@ -22,25 +22,31 @@
 
   </head>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">WebSiteName</a>
+  <div id="navBar">
+    <div id="catModeNavBar">
+      <div class="row">
+        <nav id="navBarStyle" class="navbar fixed-top" style="background-color: #00E5EE;">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-left"><img id= "navBarLogo" src="./css/logos/WhitePawsLogo.png" height="70px"></a>
+              <a id="navBarAppName" class="appName">Cat Feeder</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <button id ="navbar-button" class="btn btn-danger navbar-btn">Useless Button</button>
+            </ul>
+          </div>
+        </nav>
       </div>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Page 1</a></li>
-        <li><a href="#">Page 2</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
     </div>
-  </nav>
+  </div>
 
   <body>
 
+    <div class="row">
+      <div>
+        <br><br><br><br>
+      </div>
+    </div>
     <div class="row">
     <div class="col-3">
       1 of 3
@@ -72,10 +78,6 @@
       </div>
     </div>
   </div>
-
-    <h1 id="title">Cat Feeder</h1>
-
-    <button type="button" name="toggle" id="toggle"> don't click this</button>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
