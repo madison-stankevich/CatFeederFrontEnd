@@ -20,6 +20,11 @@ class catFood {
     name.textContent = `${this.name}: ${this.price}`
     description.textContent = this.description
 
+    name.classList.add("infoName")
+    description.classList.add("infoDescription")
+    picture.classList.add("inforPic")
+
+    information.appendChild(document.createElement("br"));
     information.appendChild(name)
     information.appendChild(picture)
     information.appendChild(description)

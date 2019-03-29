@@ -16,6 +16,10 @@ class Assassin {
     let name = document.createElement('h3')
     let description = document.createElement('p')
 
+    name.classList.add("favFoodName")
+    description.classList.add("infoDescription")
+    picture.classList.add("inforPic")
+
     picture.src = this.imageUrl
     name.textContent = `${this.name}: ${this.price}`
     description.textContent = this.description

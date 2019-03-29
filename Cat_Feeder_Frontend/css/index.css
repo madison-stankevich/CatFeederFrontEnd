@@ -105,3 +105,37 @@
   text-shadow: 4px 4px 10px black;
   box-shadow: 2px 2px 5px black;
 }
+
+.infoName {
+  font-size: 30pt;
+}
+.infoPic {
+  height: 100px;
+}
+.infoDescription {
+  font-size: 25pt;
+}
+
+.catModeButtons {
+  background-color:  #00E5EE;
+  font-size: 17pt;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  border: 1px solid black
+}
+
+.markModeButtons {
+  font-size: 17pt;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+
+.newMarkButton {
+  font-size: 17pt;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  align-content: center;
+  margin-left: 20px;
+}

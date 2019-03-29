@@ -45,10 +45,12 @@ class Cat {
     status.textContent = this.status
     picture.src = this.imageUrl
     pictureOverlay.src = "http://www.clker.com/cliparts/2/l/Z/u/a/S/pink-heart-md.png"
-    renderCatFoodForm.textContent = "update favorite food"
+    renderCatFoodForm.textContent = "Update Favorite Food"
     renderCatFoodForm.id = "cat-food-button"
-    renderCatFoodForm.classList.add("btn-success")
+    renderCatFoodForm.classList.add("btn-info")
     renderCatFoodForm.classList.add("btn")
+    renderCatFoodForm.classList.add("catModeButtons")
+
 
     name.classList.add("nameProfile")
     picture.classList.add("profile-image")
@@ -82,11 +84,10 @@ class Cat {
         status.textContent = this.status;
         markAdapter.updateItem(this.markId, {alive: false})
       }
-      statusButton.textContent = "feed this cat"
-      statusButton.classList.add("btn-success")
+      statusButton.textContent = "Feed This Cat"
+      statusButton.classList.add("btn-danger")
       statusButton.classList.add("btn")
-
-      // statusButton.classList.add("catModeBlue")
+      statusButton.classList.add("catModeButtons")
 
       statusButton.addEventListener('click', feed.bind(this))
       div.appendChild(statusButton)
@@ -148,6 +149,7 @@ class Cat {
     submit.value = "Submit"
     submit.classList.add("btn-success")
     submit.classList.add("btn")
+    submit.classList.add("catModeButtons")
 
     form.appendChild(submit)
     updateCatFood.appendChild(form)

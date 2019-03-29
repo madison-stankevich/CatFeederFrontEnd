@@ -54,8 +54,12 @@ class Mark {
 
     deleteButton.classList.add("btn-success")
     deleteButton.classList.add("btn")
+    deleteButton.classList.add("markModeButtons")
+
+
     renderAssassinForm.classList.add("btn-danger")
     renderAssassinForm.classList.add("btn")
+    renderAssassinForm.classList.add("markModeButtons")
 
     name.classList.add("nameProfileHL")
     picture.classList.add("profile-image")
@@ -103,6 +107,8 @@ class Mark {
       statusButton.textContent = "This has been handled"
       statusButton.classList.add("btn-danger")
       statusButton.classList.add("btn")
+      statusButton.classList.add("markModeButtons")
+
 
       statusButton.addEventListener('click', kill.bind(this))
       div.appendChild(statusButton)
@@ -167,6 +173,8 @@ class Mark {
 
     submit.classList.add("btn-danger")
     submit.classList.add("btn")
+    submit.classList.add("markModeButtons")
+
 
     form.appendChild(submit)
     updateCatFood.appendChild(form)

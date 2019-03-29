@@ -93,10 +93,10 @@ function hitList(currentMarkId = null){
 
   let newMarkButton = document.createElement('button')
   newMarkButton.id = "new-mark-button"
-  newMarkButton.textContent = "add new mark"
+  newMarkButton.textContent = "Add New Mark"
   newMarkButton.classList.add("btn-danger")
   newMarkButton.classList.add("btn")
-
+  newMarkButton.classList.add("newMarkButton")
 
   formContainer.style.display = 'none'
   formToggle.appendChild(newMarkButton)
